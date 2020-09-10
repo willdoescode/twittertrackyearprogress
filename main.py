@@ -42,7 +42,7 @@ def generate_progress(percent):
 
 def tweet_it():
     api.update_status(
-        f'We are {get_percent()}% through the year!\n[{generate_progress(get_percent())}]'
+        f'We are {get_percent()}% through the year!\n{generate_progress(get_percent())}'
     )
 
 
