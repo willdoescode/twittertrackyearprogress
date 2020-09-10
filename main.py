@@ -49,4 +49,4 @@ def tweet_it():
 if __name__ == '__main__':
     while True:
         tweet_it()
-        time.sleep(86400)
+        time.sleep(86490)
