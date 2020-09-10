@@ -31,10 +31,12 @@ def get_percent():
 
 
 def generate_progress(percent):
-    progress = '::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::'
-    progress_bar = [char for char in progress]
-    progress_bar.insert(percent - 1, '[]')
-    progress = ''.join(progress_bar)
+    progress = []
+    for i in range(math.floor(percent / 5)):
+        progress.append('▓')
+    for i in range(20 - len(progress)):
+        progress.append('░')
+    progress = ''.join(progress)
     return progress
 
 
