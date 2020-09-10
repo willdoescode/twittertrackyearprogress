@@ -6,9 +6,9 @@ git clone https://github.com/willdoescode/twittertrackyearprogress.git
 ```bash
 cd yearproggresspython
 ```
-## if you dont have virtualenv installed
+if you dont have virtualenv installed
 ```bash
-sudo pip3 install virtualenv
+pip3 install --user virtualenv
 ```
 ```bash
 virtualenv venv
