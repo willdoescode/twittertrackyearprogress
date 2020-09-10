@@ -4,6 +4,7 @@ import dotenv
 import datetime
 import calendar
 import math
+import logging
 import time
 dotenv.load_dotenv()
 
@@ -16,6 +17,7 @@ auth = tweepy.OAuthHandler(api_key, api_secret)
 auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
+logging.basicConfig(filename='./logs.log', level=logging.DEBUG)
 
 
 def get_percent():
@@ -28,4 +30,21 @@ def get_percent():
     return math.floor(round(100 * total_days / 365, 1))
 
 
-print(f'{get_percent()}%')
+def generate_progress(percent):
+    progress = '::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::'
+    progress_bar = [char for char in progress]
+    progress_bar.insert(percent - 1, '[]')
+    progress = ''.join(progress_bar)
+    return progress
+
+
+def tweet_it():
+    api.update_status(
+        f'We are {get_percent()}% through the year!\n[{generate_progress(get_percent())}]'
+    )
+
+
+if __name__ == '__main__':
+    while True:
+        tweet_it()
+        time.sleep(86400)
